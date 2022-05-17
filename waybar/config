@@ -1,0 +1,27 @@
+{
+    "layer": "top",
+    "height": 5,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["sway/language","pulseaudio","battery", "clock"],
+    "sway/window": {
+        "max-length": 100
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+    },
+    "clock": {
+        "format": "{:%d.%m.%Y  %H:%M}"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {format_source}",
+        "format-source": "{volume}%",
+        "format-source-muted": "M",
+	"format-muted": "M",
+        "on-click": "pulsemixer"
+    },
+    "sway/language": {
+    	"format": "{short}",
+}
+}
+}

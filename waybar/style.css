@@ -1,0 +1,38 @@
+* {
+    	font-size: 20px;
+}
+
+#workspaces button.focused {
+    	background-color: #ffffff;
+	color: black;
+	border-radius: 0px;
+}
+
+#workspaces button {
+    padding: 5px 10px;
+}
+
+window#waybar {
+    	background: rgba(0, 0, 0, 0.8);
+    	color: white;
+}
+
+#clock {
+	margin-left: 10px;
+}
+
+#battery {
+	margin-left: 10px;
+}
+
+#battery.charging, #battery.plugged {
+    	color: #a2dbac;
+}
+
+#battery.discharging, #batter7.unplugged {
+	color: #dba2a2;
+}
+
+#language{
+	margin-right: 10px;
+}
