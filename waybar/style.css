@@ -6,6 +6,7 @@
     	background-color: #ffffff;
 	color: black;
 	border-radius: 0px;
+	margin: 4px;
 }
 
 #workspaces button {
@@ -13,26 +14,49 @@
 }
 
 window#waybar {
-    	background: rgba(0, 0, 0, 0.8);
+    	background: rgba(4, 4, 4, 0.8);
     	color: white;
 }
 
 #clock {
 	margin-left: 10px;
+	background-color: white;
+	border-radius: 0px;
+	color: black;
+	margin: 4px;
+	padding: 3px;
 }
 
 #battery {
 	margin-left: 10px;
+	background-color: white;
+	margin: 4px;
+	border-radius: 0px;
+	padding: 3px;
 }
 
 #battery.charging, #battery.plugged {
-    	color: #a2dbac;
+    	color: #3a9452;
 }
 
 #battery.discharging, #batter7.unplugged {
-	color: #dba2a2;
+	color: #732727;
 }
 
 #language{
 	margin-right: 10px;
+	background-color: white;
+	margin: 4px;
+	border-radius: 0px;
+	color: black;
+	padding: 3px;
+
+}
+
+#pulseaudio{
+	background-color: white;
+	margin: 4px;
+	border-radius: 0px;
+	color: black;
+	padding: 3px;
 }

@@ -5,6 +5,7 @@
 # Read `man 5 sway` for a complete reference.
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gammastep
 exec_always autotiling
 bar swaybar_command waybar
 
@@ -20,9 +21,9 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 2
 bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
 bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
 bindsym XF86AudioMute exec pulsemixer --toggle-mute
-bindsym XF86AudioMicMute exec pulsemixer --id source-155 --toggle-mute
+bindsym XF86AudioMicMute exec pulsemixer --id source-46 --toggle-mute
 
-
+bindsym Mod4+Shift+p exec grim -g "$(slurp -d)"
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -42,11 +43,12 @@ set $menu rofi -show run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ondra/Pictures/3.jpg fill
+output * bg /home/ondra/Pictures/4.png fill
 #
 # Example configuration:
 #
-output eDP-1 scale 1 adaptive_sync on
+output eDP-1 scale 1
+output * adaptive_sync on
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 

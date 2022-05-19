@@ -1,14 +1,14 @@
 {
     "layer": "top",
-    "height": 5,
+    "height": 3,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": ["sway/language","pulseaudio","battery", "clock"],
     "sway/window": {
-        "max-length": 100
+        "max-length": 200
     },
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}%",
     },
     "clock": {
         "format": "{:%d.%m.%Y  %H:%M}"
