@@ -3,25 +3,35 @@
     "height": 3,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["sway/language","pulseaudio","battery", "clock"],
+    "modules-right": ["tray","sway/language","backlight","pulseaudio","battery", "clock"],
     "sway/window": {
         "max-length": 200
     },
     "battery": {
-        "format": "{capacity}%",
+        "format": "Battery {capacity}%",
     },
     "clock": {
         "format": "{:%d.%m.%Y  %H:%M}"
     },
     "pulseaudio": {
-        "format": "{volume}% {format_source}",
+        "format": "Volume {volume}% {format_source}",
         "format-source": "{volume}%",
         "format-source-muted": "M",
 	"format-muted": "M",
         "on-click": "pulsemixer"
     },
     "sway/language": {
-    	"format": "{short}",
-}
+    	"format": "Keyboard {short}",
+	},
+"backlight": {
+    "device": "amdgpu_bl0",
+    "format": "Brightness {percent}%",
+},
+"tray": {
+    "icon-size": 26,
+    "spacing": 10
+},
+"sway/workspaces": {
+	"disable-scroll": true
 }
 }

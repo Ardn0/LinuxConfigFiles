@@ -1,16 +1,23 @@
 * {
     	font-size: 20px;
+	font-family: Ubuntu;
 }
 
 #workspaces button.focused {
     	background-color: #ffffff;
 	color: black;
-	border-radius: 0px;
+	border-radius: 5px;
 	margin: 4px;
 }
 
 #workspaces button {
     padding: 5px 10px;
+    color: white;
+}
+
+#workspaces button:hover{
+	color: black;
+	background-color: rgba(4, 4, 4, 0.8);
 }
 
 window#waybar {
@@ -21,7 +28,7 @@ window#waybar {
 #clock {
 	margin-left: 10px;
 	background-color: white;
-	border-radius: 0px;
+	border-radius: 5px;
 	color: black;
 	margin: 4px;
 	padding: 3px;
@@ -31,23 +38,23 @@ window#waybar {
 	margin-left: 10px;
 	background-color: white;
 	margin: 4px;
-	border-radius: 0px;
+	border-radius: 5px;
 	padding: 3px;
 }
 
 #battery.charging, #battery.plugged {
-    	color: #3a9452;
+    	color: #00611a;
 }
 
 #battery.discharging, #batter7.unplugged {
-	color: #732727;
+	color: #610000;
 }
 
 #language{
 	margin-right: 10px;
 	background-color: white;
 	margin: 4px;
-	border-radius: 0px;
+	border-radius: 5px;
 	color: black;
 	padding: 3px;
 
@@ -56,7 +63,32 @@ window#waybar {
 #pulseaudio{
 	background-color: white;
 	margin: 4px;
-	border-radius: 0px;
+	border-radius: 5px;
 	color: black;
 	padding: 3px;
+}
+
+#backlight{
+	background-color: white;
+	margin: 4px;
+	border-radius: 5px;
+	color: black;
+	padding: 3px;
+
+}
+
+#tray{
+	margin: 4px;
+	border-radius: 5px;
+	color: black;
+	padding: 3px;
+}
+
+#tray menu{
+	background-color: black;
+	color: white
+}
+
+#window{
+	font-weight: bold;
 }

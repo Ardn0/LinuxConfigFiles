@@ -6,22 +6,27 @@
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gammastep
+exec mako
 exec_always autotiling
 bar swaybar_command waybar
 
-default_border pixel 1
-client.focused #ffffff #ffffff #ffffff #ffffff #ffffff
-client.unfocused #000000 #000000 #000000 #000000 #000000
+default_border pixel 3 
+client.focused #ffffff #ffffff #000000 #ffffff #ffffff
+client.unfocused #000000 #000000 #ffffff #000000 #000000
 client.focused_inactive #000000 #000000 #000000 #000000 #000000
 
 gaps inner 10
+smart_gaps on
+smart_borders on
+
+font Ubuntu 14
 
 bindsym XF86MonBrightnessDown exec xbacklight -dec 2
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2
 bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
 bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
 bindsym XF86AudioMute exec pulsemixer --toggle-mute
-bindsym XF86AudioMicMute exec pulsemixer --id source-46 --toggle-mute
+bindsym XF86AudioMicMute exec pulsemixer --id source-58 --toggle-mute
 
 bindsym Mod4+Shift+p exec grim -g "$(slurp -d)"
 ### Variables
@@ -38,12 +43,12 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -show run
+set $menu wofi --show run
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ondra/Pictures/4.png fill
+output * bg /home/ondra/Pictures/2.jpg fill
 #
 # Example configuration:
 #
@@ -161,28 +166,8 @@ exec swayidle -w timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "outp
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    #bindsym $mod+b splith
-    bindsym $mod+v splitv
-
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    #bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
-
-    # Make the current focus fullscreen
     bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+q floating toggle
 #
 # Scratchpad:
 #
@@ -219,23 +204,3 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-#    status_command while date +'%d.%m.%Y %H:%M'; do sleep 60; done
-
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
-
-include /etc/sway/config.d/*
