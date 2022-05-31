@@ -52,6 +52,7 @@ output * bg /home/ondra/Pictures/2.jpg fill
 #
 # Example configuration:
 #
+output DP-1 mode 1920x1080@74.924Hz scale 1
 output eDP-1 scale 1
 output * adaptive_sync on
 #
