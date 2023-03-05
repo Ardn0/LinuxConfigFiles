@@ -6,8 +6,10 @@
 
 exec_always autotiling
 exec mako
-exec ~/.config/sway/teplota.sh
-exec ~/.config/sway/mojeNastaveni.sh
+exec pipewire
+exec pipewire-pulse
+#exec ~/.config/sway/teplota.sh
+#exec ~/.config/sway/mojeNastaveni.sh
 
 gaps inner 10
 default_border none
@@ -32,7 +34,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/4.jpg fill
+#output * bg ~/Pictures/4.jpg fill
 #
 # Example configuration:
 #
@@ -77,8 +79,8 @@ for_window [shell=".*"] inhibit_idle fullscreen
 # Basics:
 #
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+bindsym XF86MonBrightnessUp exec light -A 2
+bindsym XF86MonBrightnessDown exec light -U 2
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -235,7 +237,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while ~/.config/sway/status.sh ; do sleep 1; done
+    status_command ~/.config/sway/status.sh
     height 30
     font Monospace 12
     colors {

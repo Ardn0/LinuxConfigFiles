@@ -1,5 +1,4 @@
-doas cpupower frequency-set -g conservative
-xrandr --output eDP --mode 1920x1200
+sudo cpupower frequency-set -g conservative
 sudo ~/.config/i3/sway/rootScripts/napajeniKontrola.sh
 
 while :;

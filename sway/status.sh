@@ -1,26 +1,22 @@
-while :;
-do
+#!/bin/bash
+#
+#
 
+while true; do
 datumCas=$(date +'%H:%M %d.%m.%Y')
 verzeKernelu=$(uname -r | cut -d '-' -f1)
 statusBaterie=$(cat /sys/class/power_supply/BAT1/status)
 procentoBaterie=$(cat /sys/class/power_supply/BAT1/capacity)
-procentoJas=$(xbacklight -get)
+procentoJas="nic"
 procentoZvuk=$(pactl get-sink-volume 0 | cut -d '/' -f2 | head -n 1 | xargs)
 zvukZtlumen=$(pactl get-sink-mute 0)
 mikrofonZtlumen=$(pactl get-source-mute 0)
-teplota=$(cat ~/.config/i3/sway/teplota)
+teplota=$(cat ~/.config/sway/teplota)
 teplotaCPU=$(sensors | grep "temp1" | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '+' -f2 | xargs)
-rozlozeniKlavesnice=$(xkb-switch)
+rozlozeniKlavesnice="nic"
 wifiPripojena=$(nmcli | grep "wlp1s0" | head -1 | cut -d ':' -f2 | cut -d ' ' -f4 | xargs)
 
-# KLAVESNICE
-#if [[ "$rozlozeniKlavesnice" == *"Czech"* ]]
-#then
-#	rozlozeniKlavesnice="cz"
-#else
-#	rozlozeniKlavesnice="en"
-#fi
+
 
 # WIFI
 if [[ "$wifiPripojena" == "" ]]
@@ -46,7 +42,7 @@ if [[ "$statusBaterie" == "Not charging" ]]
 then 
 	   echo [$wifiPripojena][$rozlozeniKlavesnice][CPU $teplotaCPU][Litomyšl $teplota][Zvuk $procentoZvuk, Mic $mikrofonZtlumen][Jas $procentoJas%][Baterie $procentoBaterie%][Kernel $verzeKernelu][$datumCas]
 
-    else
+else
         if [[ "$statusBaterie" == "Charging" ]]
         then
         statusBaterie="+"
@@ -59,7 +55,6 @@ then
 
 echo [$wifiPripojena][$rozlozeniKlavesnice][CPU $teplotaCPU][Litomyšl $teplota][Zvuk $procentoZvuk '|' Mic $mikrofonZtlumen][Jas $procentoJas%][Baterie $statusBaterie $procentoBaterie%][Kernel $verzeKernelu][$datumCas]
 fi
-
 
 sleep 1
 done
