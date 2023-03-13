@@ -7,16 +7,22 @@ datumCas=$(date +'%H:%M %d.%m.%Y')
 verzeKernelu=$(uname -r | cut -d '-' -f1)
 statusBaterie=$(cat /sys/class/power_supply/BAT1/status)
 procentoBaterie=$(cat /sys/class/power_supply/BAT1/capacity)
-procentoJas="nic"
+procentoJas=$(light -G)
 procentoZvuk=$(pactl get-sink-volume 0 | cut -d '/' -f2 | head -n 1 | xargs)
 zvukZtlumen=$(pactl get-sink-mute 0)
 mikrofonZtlumen=$(pactl get-source-mute 0)
 teplota=$(cat ~/.config/sway/teplota)
 teplotaCPU=$(sensors | grep "temp1" | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '+' -f2 | xargs)
-rozlozeniKlavesnice="nic"
+rozlozeniKlavesnice=$(swaymsg -t get_inputs | jq '.[0].xkb_active_layout_name')
 wifiPripojena=$(nmcli | grep "wlp1s0" | head -1 | cut -d ':' -f2 | cut -d ' ' -f4 | xargs)
 
 
+if [[ "$rozlozeniKlavesnice" == *"Czech"* ]];
+then
+        rozlozeniKlavesnice="cz"
+else
+        rozlozeniKlavesnice="en"
+fi
 
 # WIFI
 if [[ "$wifiPripojena" == "" ]]
@@ -40,7 +46,7 @@ fi
 # ZBYTEK
 if [[ "$statusBaterie" == "Not charging" ]]
 then 
-	   echo [$wifiPripojena][$rozlozeniKlavesnice][CPU $teplotaCPU][Litomyšl $teplota][Zvuk $procentoZvuk, Mic $mikrofonZtlumen][Jas $procentoJas%][Baterie $procentoBaterie%][Kernel $verzeKernelu][$datumCas]
+	   echo [$wifiPripojena][$rozlozeniKlavesnice][CPU $teplotaCPU][Zvuk $procentoZvuk, Mic $mikrofonZtlumen][Jas $procentoJas%][Baterie $procentoBaterie%][Kernel $verzeKernelu][$datumCas]
 
 else
         if [[ "$statusBaterie" == "Charging" ]]
@@ -53,7 +59,7 @@ else
         statusBaterie="-"
         fi
 
-echo [$wifiPripojena][$rozlozeniKlavesnice][CPU $teplotaCPU][Litomyšl $teplota][Zvuk $procentoZvuk '|' Mic $mikrofonZtlumen][Jas $procentoJas%][Baterie $statusBaterie $procentoBaterie%][Kernel $verzeKernelu][$datumCas]
+echo [$wifiPripojena][$rozlozeniKlavesnice][CPU $teplotaCPU][Zvuk $procentoZvuk '|' Mic $mikrofonZtlumen][Jas $procentoJas%][Baterie $statusBaterie $procentoBaterie%][Kernel $verzeKernelu][$datumCas]
 fi
 
 sleep 1

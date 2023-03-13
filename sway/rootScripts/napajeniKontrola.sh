@@ -10,6 +10,7 @@ else
 	echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
 fi
 
+echo "aa"
 sleep 10
 done
 
