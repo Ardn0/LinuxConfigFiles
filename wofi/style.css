@@ -1,0 +1,21 @@
+#input{
+    border-radius: 0%;
+    border: none;
+    color: black;
+    background-color: white;
+}
+
+#window{
+    color: white;
+}
+
+#outer-box{
+    border: 1px solid white;
+    background-color: black;
+}
+
+#entry:selected{
+    background-color: cadetblue;
+    border: none;
+    border-radius: 0%;
+}
