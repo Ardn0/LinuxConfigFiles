@@ -13,6 +13,7 @@
 
   hardware.opengl.extraPackages = [
 	pkgs.amdvlk
+    rocm-opencl-icd
 	];
 
   hardware.opengl.extraPackages32 = [
@@ -22,7 +23,7 @@
   hardware.opengl.driSupport = true;
   environment.variables.AMD_VULKAN_ICD = "RADV";
 
-  powerManagement.cpuFreqGovernor = "conservative";
+#   powerManagement.cpuFreqGovernor = "conservative";
 
   networking.hostName = "nixLaptop"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,14 +35,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Prague";
 
-
-  programs.sway.enable = true;
   programs.light.enable = true;
   virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
   programs.adb.enable = true;
- 
-  virtualisation.docker.enable = true;
  
   nix.gc = {
   automatic = true;
@@ -51,7 +47,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "daily";
+    dates = "weekly";
     allowReboot = false;
   };
 
@@ -59,7 +55,7 @@
   services.tlp = {
     enable = true;
     settings = {
-	CPU_SCALING_GOVERNOR_ON_AC = "conservative";
+	CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
 	CPU_SCALING_GOVERNOR_ON_BAT= "conservative";
 	CPU_BOOST_ON_AC = 1;
 	CPU_BOOST_ON_BAT = 0;
@@ -84,14 +80,14 @@
     };
   };
 
-  security.sudo.extraRules= [
-  {  users = [ "ondra" ];
-    commands = [
-       { command = "/nix/store/nzxnkhmxj766f9jq3m3sjndw1fpzi16j-ryzenadj-0.11.1/bin/ryzenadj" ; options= [ "NOPASSWD" ];}
-       { command = "/home/ondra/.config/sway/rootScripts/napajeniKontrola.sh" ;}
-    ];
-  }
-];  
+#   security.sudo.extraRules= [
+#   {  users = [ "ondra" ];
+#     commands = [
+#        { command = "/nix/store/nzxnkhmxj766f9jq3m3sjndw1fpzi16j-ryzenadj-0.11.1/bin/ryzenadj" ; options= [ "NOPASSWD" ];}
+#        { command = "/home/ondra/.config/sway/rootScripts/napajeniKontrola.sh" ;}
+#     ];
+#   }
+# ];
 
 
   # PipeWire
@@ -106,7 +102,7 @@
 
   users.users.ondra = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "video" "networkmanager" "libvirtd" "docker" "adbusers" ]; 
+     extraGroups = [ "wheel" "video" "networkmanager" "libvirtd" "adbusers" ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -119,12 +115,9 @@
      neofetch
      git
      lm_sensors
-     autotiling
-     jq
      pulseaudio
-     ryzenadj
      virt-manager
-     linuxKernel.packages.linux_6_2.cpupower
+#      linuxKernel.packages.linux_6_2.cpupower
      vscodium
    ];
 
