@@ -35,7 +35,10 @@
   # Set your time zone.
   time.timeZone = "Europe/Prague";
 
-  programs.light.enable = true;
+  # Desktop Environment
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  #programs.light.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.adb.enable = true;
  
